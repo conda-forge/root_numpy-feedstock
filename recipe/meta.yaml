@@ -1,5 +1,5 @@
 {% set name = "root_numpy" %}
-{% set version = "4.7.3" %}
+{% set version = "4.8.0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: af033c8e84301034c3005cf92c12f7c3eaa8b61be442c2bc21dbb5362baec66f
+  sha256: 5842bbcde92133f60a61f56e9f0a875a0dbc2a567cc65a9ac141ecd72e416878
 
 build:
   number: 0
