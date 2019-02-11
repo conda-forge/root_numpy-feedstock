@@ -8,11 +8,12 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 5842bbcde92133f60a61f56e9f0a875a0dbc2a567cc65a9ac141ecd72e416878
+  patches:
+    - Use-1z-instead-of-17.patch  # [osx]
 
 build:
-  number: 0
-  # root5 is only available for python2.7 on unix
-  skip: true  # [win or py3k]
+  number: 1
+  skip: true  # [win]
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
@@ -21,11 +22,11 @@ requirements:
   host:
     - pip
     - python
-    - root5
+    - root
     - numpy
   run:
     - python
-    - root5
+    - root
     - {{ pin_compatible('numpy') }}
 
 test:
@@ -34,7 +35,7 @@ test:
   requires:
     - nose
   commands:
-    - nosetests -s -v {{ name }}
+    - nosetests -s -v {{ name }} --exclude='(test_evaluate_func|test_tmva_multiclass)'
 
 about:
   home: http://scikit-hep.org/root_numpy
