@@ -33,7 +33,7 @@ test:
   requires:
     - nose
   commands:
-    - nosetests -s -v {{ name }}
+    - nosetests -s -v {{ name }} --exclude='(test_evaluate_func|test_tmva_multiclass)'
 
 about:
   home: http://scikit-hep.org/root_numpy
