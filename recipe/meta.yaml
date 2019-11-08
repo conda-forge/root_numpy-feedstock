@@ -22,7 +22,7 @@ requirements:
   host:
     - pip
     - python
-    - root
+    - root_base
     - numpy
   run:
     - python
