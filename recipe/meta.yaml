@@ -25,7 +25,7 @@ requirements:
     - root_base
     - root-binaries
     - root-dependencies
-    - numpy
+    - numpy >=1.11
   run:
     - python
     - {{ pin_compatible('numpy') }}
