@@ -23,10 +23,10 @@ requirements:
     - pip
     - python
     - root_base
+    - root-binaries
     - numpy
   run:
     - python
-    - root
     - {{ pin_compatible('numpy') }}
 
 test:
@@ -39,7 +39,7 @@ test:
 
 about:
   home: http://scikit-hep.org/root_numpy
-  license: BSD
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   doc_url: http://scikit-hep.org/root_numpy
