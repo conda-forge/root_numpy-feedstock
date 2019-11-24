@@ -3,7 +3,7 @@ About root_numpy
 
 Home: http://scikit-hep.org/root_numpy
 
-Package license: BSD
+Package license: BSD-3-Clause
 
 Feedstock license: BSD 3-Clause
 
