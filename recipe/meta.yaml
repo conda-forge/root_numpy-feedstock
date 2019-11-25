@@ -9,12 +9,14 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 5842bbcde92133f60a61f56e9f0a875a0dbc2a567cc65a9ac141ecd72e416878
   patches:
-    - Use-1z-instead-of-17.patch  # [osx]
+    - 396.patch
 
 build:
   number: 2
   skip: true  # [win]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  # -Wno-register is required for Python 2.7 in C++17 mode
+  # See: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=231073
+  script: CFLAGS="${CFLAGS} -Wno-register" {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   build:
@@ -22,11 +24,12 @@ requirements:
   host:
     - pip
     - python
-    - root
+    - root_base
+    - root-binaries
+    - root-dependencies
     - numpy
   run:
     - python
-    - root
     - {{ pin_compatible('numpy') }}
 
 test:
@@ -39,7 +42,7 @@ test:
 
 about:
   home: http://scikit-hep.org/root_numpy
-  license: BSD
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   doc_url: http://scikit-hep.org/root_numpy
