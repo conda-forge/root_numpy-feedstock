@@ -14,7 +14,9 @@ source:
 build:
   number: 2
   skip: true  # [win]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  # -Wno-register is required for Python 2.7 in C++17 mode
+  # See: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=231073
+  script: CFLAGS="${CFLAGS} -Wno-register" {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   build:
