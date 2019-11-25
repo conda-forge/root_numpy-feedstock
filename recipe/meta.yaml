@@ -12,7 +12,7 @@ source:
     - 396.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
   # -Wno-register is required for Python 2.7 in C++17 mode
   # See: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=231073
@@ -26,7 +26,6 @@ requirements:
     - python
     - root_base
     - root-binaries
-    - root-dependencies
     - numpy
   run:
     - python
