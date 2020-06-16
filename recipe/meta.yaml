@@ -12,7 +12,7 @@ source:
     - 396.patch
 
 build:
-  number: 7
+  number: 8
   skip: true  # [win]
   # -Wno-register is required for Python 2.7 in C++17 mode
   # See: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=231073
@@ -30,6 +30,8 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
+  run_constrained:
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
   imports:
