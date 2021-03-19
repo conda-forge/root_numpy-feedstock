@@ -19,9 +19,11 @@ pin_run_as_build:
 python:
 - 3.9.* *_cpython
 root_base:
-- '6.22'
+- 6.22.6
 target_platform:
 - linux-64
 zip_keys:
+- - cdt_name
+  - docker_image
 - - python
   - numpy
